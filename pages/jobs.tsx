@@ -24,7 +24,7 @@ const Jobs: NextPage = () => {
                 description: "You make sure everyone is happy and having a good time first, then listen to hear what they want next.",
             },
             {
-                title: 'Snowflake',
+                title: 'Create your own',
                 description: "You go to a sushi restaurant and order the crazy stuff that isn't even on the menu, and that is how find a job too.",
             },            
         ]
