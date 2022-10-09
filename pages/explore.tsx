@@ -6,16 +6,15 @@ import Link from 'next/link';
 const { publicRuntimeConfig } = getConfig()
 
 const Explore = ({ data }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
-
     return (
         <>
             <Header web3={false} />
             <p className={styles.description}>
                 Explore some distributed databases.
-            </p>   
+            </p>
             <div className="divide-y divide-slate-200">
                 {
-                    data.map((database:any, index:any) => {
+                    data.map((database: any, index: any) => {
                         return (
                             <Link key={index} href={"/database/" + database._id} >
                                 <a key={index} className="text-xl  py-4 hover:text-green-500 flex flex-row justify-between items-center">

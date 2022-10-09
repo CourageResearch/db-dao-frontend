@@ -27,26 +27,26 @@ const MintDatabase: NextPage = () => {
     const [formSchema, setFormSchema] = useState(initFormSchema)
     const [formUiSchema, setFormUiSchema] = useState(initFormUiSchema)
     const [formData, setFormData] = useState(initFormData)
-    
-    const [ipfsHash, setIpfsHash] = useState<string|undefined>()
+
+    const [ipfsHash, setIpfsHash] = useState<string | undefined>()
     const [isIPFSLoading, setIsIPFSLoading] = useState(false)
 
     const PINATA_KEY = publicRuntimeConfig.PINATA_KEY
     const PINATA_SECRET = publicRuntimeConfig.PINATA_SECRET
     const pinata = pinataSDK(PINATA_KEY, PINATA_SECRET);
-    
+
 
     const { chain: activeChain } = useNetwork();
     const explorerUrl = activeChain?.blockExplorers?.default.url
     const exploreName = activeChain?.blockExplorers?.default.name
 
-    const writeToChain = async ()=>{
+    const writeToChain = async () => {
         const ipfsHash = await uploadToPinata(databaseName)
         console.log(`ipfsHash: ${ipfsHash}`)
         setIpfsHash(ipfsHash)
     }
 
-    async function uploadToPinata(databaseName:string){
+    async function uploadToPinata(databaseName: string) {
         setIsIPFSLoading(true)
         const body = {
             name: databaseName,
@@ -54,13 +54,13 @@ const MintDatabase: NextPage = () => {
             formUiSchema: formUiSchema,
             formData: formData,
         }
-    
+
         const options = {
             pinataMetadata: {
-                name: databaseName.substring(0, 200) 
+                name: databaseName.substring(0, 200)
             }
         }
-    
+
         try {
             const result = await pinata.pinJSONToIPFS(body, options)
             setIsIPFSLoading(false)
@@ -70,7 +70,7 @@ const MintDatabase: NextPage = () => {
         }
     }
 
-    const { 
+    const {
         config,
         error: prepareError,
         isError: isPrepareError,
@@ -96,35 +96,32 @@ const MintDatabase: NextPage = () => {
             console.log("isPrepareSuccess")
             write?.()
         }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [isPrepareSuccess]);
-
-    
-
 
     return (
         <>
-            <Header web3={true}/>
+            <Header web3={true} />
 
             {!isTxSuccess && <p className={styles.description}>
                 Mint a database on any subject for free.
-            </p> }
+            </p>}
 
             {!isTxSuccess && <div className="block p-6 rounded-lg shadow-lg bg-white">
                 <form
                     className="flex flex-col"
                     onSubmit={(e) => {
                         e.preventDefault()
-                        writeToChain()  
+                        writeToChain()
                     }}
                 >
                     <div className="form-group mb-6">
                         <label htmlFor="exampleInputEmail1" className="form-label inline-block mb-2 text-gray-700">
                             Database Name
                         </label>
-                        <input 
+                        <input
                             id="database"
-                            type="text" 
+                            type="text"
                             className={styles.greenInput}
                             aria-describedby="database name"
                             placeholder="Database Name"
@@ -138,9 +135,9 @@ const MintDatabase: NextPage = () => {
                         <label htmlFor="exampleInputEmail1" className="form-label inline-block mb-2 text-gray-700">
                             Row Deposit (Wei)
                         </label>
-                        <input 
+                        <input
                             id="deposit"
-                            type="number" 
+                            type="number"
                             className={styles.greenInput}
                             aria-describedby="row deposit"
                             placeholder="10"
@@ -149,12 +146,12 @@ const MintDatabase: NextPage = () => {
                             required={true}
                         />
                         <small id="emailHelp" className="block mt-1 text-xs text-gray-600">
-                            The amount someone has to  <a 
-                                className={styles.greenlink} 
-                                href='https://docs.dbdao.xyz/dbdao/protocol' 
-                                target="_blank" 
+                            The amount someone has to  <a
+                                className={styles.greenlink}
+                                href='https://docs.dbdao.xyz/dbdao/protocol'
+                                target="_blank"
                                 rel="noopener noreferrer">
-                                    deposit
+                                deposit
                             </a> while their row is under review.
                         </small>
                     </div>
@@ -163,8 +160,8 @@ const MintDatabase: NextPage = () => {
                         <label htmlFor="exampleInputEmail1" className="form-label inline-block mb-2 text-gray-700">
                             Schema
                         </label>
-                                    
-                        <textarea 
+
+                        <textarea
                             id="formSchema"
                             className={styles.greenInput}
                             onChange={(e) => setFormSchema(JSON.parse(e.target.value))}
@@ -172,12 +169,12 @@ const MintDatabase: NextPage = () => {
                             required={true}
                         />
                         <small id="emailHelp" className="block mt-1 text-xs text-gray-600">
-                        The schema prop expects a  <a 
-                                className={styles.greenlink} 
-                                href='https://jsonforms.io/docs/integrations/react/#schema' 
-                                target="_blank" 
+                            The schema prop expects a  <a
+                                className={styles.greenlink}
+                                href='https://jsonforms.io/docs/integrations/react/#schema'
+                                target="_blank"
                                 rel="noopener noreferrer">
-                                    JSON Schema value
+                                JSON Schema value
                             </a> describing the underlying data for the form.
                         </small>
                     </div>
@@ -186,7 +183,7 @@ const MintDatabase: NextPage = () => {
                         <label htmlFor="formUiSchema" className="form-label inline-block mb-2 text-gray-700">
                             UI Schema
                         </label>
-                        <textarea 
+                        <textarea
                             id="formUiSchema"
                             className={styles.greenInput}
                             onChange={(e) => setFormUiSchema(JSON.parse(e.target.value))}
@@ -194,14 +191,13 @@ const MintDatabase: NextPage = () => {
                             required={true}
                         />
                         <small id="emailHelp" className="block mt-1 text-xs text-gray-600">
-                            The uischema is JSON describing the layout of the form <a 
-                                className={styles.greenlink} 
-                                href='https://jsonforms.io/docs/integrations/react/#uischema' 
-                                target="_blank" 
+                            The uischema is JSON describing the layout of the form <a
+                                className={styles.greenlink}
+                                href='https://jsonforms.io/docs/integrations/react/#uischema'
+                                target="_blank"
                                 rel="noopener noreferrer">
-                                    layout of the form
+                                layout of the form
                             </a>. It can contain different UI schema elements, such as layouts and controls.
-                            
                         </small>
                     </div>
 
@@ -209,26 +205,26 @@ const MintDatabase: NextPage = () => {
                         <label htmlFor="formUiSchema" className="form-label inline-block mb-2 text-gray-700">
                             Data
                         </label>
-                        <textarea 
+                        <textarea
                             id="formUiSchema"
-                            className={styles.greenInput} 
+                            className={styles.greenInput}
                             onChange={(e) => setFormData(JSON.parse(e.target.value))}
                             value={JSON.stringify(formData)}
                             required={true}
                         />
                         <small id="emailHelp" className="block mt-1 text-xs text-gray-600">
-                        The data prop represents <a 
-                                className={styles.greenlink} 
-                                href='https://jsonforms.io/docs/integrations/react/#data' 
-                                target="_blank" 
+                            The data prop represents <a
+                                className={styles.greenlink}
+                                href='https://jsonforms.io/docs/integrations/react/#data'
+                                target="_blank"
                                 rel="noopener noreferrer">
-                                    an object
+                                an object
                             </a> containing the data to be rendered by default in the form.
                         </small>
                     </div>
 
-                    <button 
-                        type="submit" 
+                    <button
+                        type="submit"
                         className={styles.greenButton}
                         disabled={(isTxLoading || isIPFSLoading)}
                     >
@@ -239,7 +235,7 @@ const MintDatabase: NextPage = () => {
             {isTxSuccess && (
                 <div className="mt-6">
                     <div className={styles.description}>
-                        Successfully minted your database.<br/> 
+                        Successfully minted your database.<br />
                     </div>
                     <div>
                         Find your newly minted database <Link href="/explore"><a
@@ -247,10 +243,10 @@ const MintDatabase: NextPage = () => {
                         >here</a></Link>.
                     </div>
                     <div>
-                        See the minting transaction on <a 
-                                className={styles.greenlink} 
-                                target="_blank" 
-                            rel="noopener noreferrer" 
+                        See the minting transaction on <a
+                            className={styles.greenlink}
+                            target="_blank"
+                            rel="noopener noreferrer"
                             href={`${explorerUrl}/tx/${txData?.hash}`}
                         >{exploreName}</a>.
                     </div>
@@ -261,7 +257,7 @@ const MintDatabase: NextPage = () => {
                 <div>Error: {(prepareError || txError)?.message.substring(0, 80)}</div>
             )}
         </>
-  )
+    )
 }
 
 export default MintDatabase;

@@ -1,51 +1,51 @@
 {
-	"type": "object",
-	"properties": {
-		"substance": {
-			"description": "Psilocybin mushrooms, LSD, Mescaline, etc.",
-			"type": "string",
-			"minLength": 1
-		},
-		"dose": {
-			"type": "string",
-			"minLength": 1,
-			"description": "3 mg, 2 tablet, 1 blotter, etc."
-		},
-		"route": {
-			"type": "string",
-			"minimum": 1,
-			"description": "oral, sublingual, nasal, IV, anal, etc."
-		},
-		"bodyWeight": {
-			"type": "number",
-			"description": "e.g. 80 kg"
-		},
-		"gender": {
-			"type": "string",
-			"enum": [
-				"Male",
-				"Female",
-				"Prefer Not To Say",
-				"Undisclosed"
-			],
-			"description": ""
-		},
-		"age": {
-			"type": "number",
-			"minimum": 1,
-			"description": ""
-		},
-		"experienceDate": {
-			"type": "string",
-			"description": ""
-		},
-		"freeText": {
-			"type": "string",
-			"description": "https://qri.org/blog/rigorous-reports"
-		},
-		"url": {
-			"type": "string",
-			"description": "Examples: https://erowid.org/experiences/exp.php?ID=109100"
-		}
-	}
+    "type": "object",
+    "properties": {
+        "substance": {
+            "description": "Psilocybin mushrooms, LSD, Mescaline, etc.",
+            "type": "string",
+            "minLength": 1
+        },
+        "dose": {
+            "type": "string",
+            "minLength": 1,
+            "description": "3 mg, 2 tablet, 1 blotter, etc."
+        },
+        "route": {
+            "type": "string",
+            "minimum": 1,
+            "description": "oral, sublingual, nasal, IV, anal, etc."
+        },
+        "bodyWeight": {
+            "type": "number",
+            "description": "e.g. 80 kg"
+        },
+        "gender": {
+            "type": "string",
+            "enum": [
+                "Male",
+                "Female",
+                "Prefer Not To Say",
+                "Undisclosed"
+            ],
+            "description": ""
+        },
+        "age": {
+            "type": "number",
+            "minimum": 1,
+            "description": ""
+        },
+        "experienceDate": {
+            "type": "string",
+            "description": ""
+        },
+        "freeText": {
+            "type": "string",
+            "description": "https://qri.org/blog/rigorous-reports"
+        },
+        "url": {
+            "type": "string",
+            "description": "Examples: https://erowid.org/experiences/exp.php?ID=109100"
+        }
+    }
 }

@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
 import type { InferGetServerSidePropsType, NextPage } from 'next';
 import {
-  useContractWrite,
-  usePrepareContractWrite,
-  useNetwork,
+    useContractWrite,
+    usePrepareContractWrite,
+    useNetwork,
 } from 'wagmi';
 import styles from '../../styles/Home.module.css';
 import { Contract, Row } from '../../interfaces';
@@ -13,24 +13,22 @@ import Link from 'next/link';
 const { publicRuntimeConfig } = getConfig()
 
 const Database = ({ database }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
-    // const databaseId = database.databaseId
     const database_id = database._id
     const databaseName = database.name
-    // const contract = database.contract
 
     const { chain: activeChain } = useNetwork();
-    const [rowId, setRowId] = useState<number|undefined>()
+    const [rowId, setRowId] = useState<number | undefined>()
 
-    const explorerUrl = activeChain?.blockExplorers?.default.url
-    const exploreName = activeChain?.blockExplorers?.default.name
+    // const explorerUrl = activeChain?.blockExplorers?.default.url
+    // const exploreName = activeChain?.blockExplorers?.default.name
 
-    async function handleRemoveRow(rowId:number){
+    async function handleRemoveRow(rowId: number) {
         console.log(`handleRemoveRow: ${rowId}`)
         setRowId(rowId)
     }
 
-    const { 
-        config:configRemoveRow,
+    const {
+        config: configRemoveRow,
         error: prepareErrorRemoveRow,
         isError: isPrepareErrorRemoveRow,
         isSuccess: isPrepareSuccessRemoveRow
@@ -38,16 +36,16 @@ const Database = ({ database }: InferGetServerSidePropsType<typeof getServerSide
         ...contractConfig,
         functionName: 'removeRow',
         args: [rowId],
-        enabled: rowId!=undefined,
+        enabled: rowId != undefined,
     });
-    
+
     const {
-        data:dataRemoveRow,
-        error:errorRemoveRow,
-        isError:isErrorRemoveRow,
-        write:writeRemoveRow,
-        isLoading:isLoadingRemoveRow,
-        isSuccess:isSuccessRemoveRow,
+        data: dataRemoveRow,
+        error: errorRemoveRow,
+        isError: isErrorRemoveRow,
+        write: writeRemoveRow,
+        isLoading: isLoadingRemoveRow,
+        isSuccess: isSuccessRemoveRow,
     } = useContractWrite(configRemoveRow);
 
     useEffect(() => {
@@ -55,34 +53,34 @@ const Database = ({ database }: InferGetServerSidePropsType<typeof getServerSide
             console.log("isPrepareSuccessRemoveRow")
             writeRemoveRow?.()
         }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [isPrepareSuccessRemoveRow]);
 
-    function renderRow(contract:Contract, row:Row, key:number){
-    
+    function renderRow(contract: Contract, row: Row, key: number) {
+
         // other info
         // owner
         // address
         // time
-    
+
         const rowId = row.rowId
-        const data:any = row.data
+        const data: any = row.data
         const headersData = Object.keys(row.data)
-    
+
         return (
             <tr key={key} className="bg-white border-b">
-                {headersData.map((header, index) => {                    
+                {headersData.map((header, index) => {
                     return (
                         <td key={index} className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                             {data[header]}
-                         </td>
-                     )
+                        </td>
+                    )
                 })}
                 <td>
-                    <button 
-                    className={styles.greenButton}
-                    
-                    onClick={() => handleRemoveRow(rowId)}>
+                    <button
+                        className={styles.greenButton}
+
+                        onClick={() => handleRemoveRow(rowId)}>
                         Remove
                     </button>
                 </td>
@@ -90,8 +88,8 @@ const Database = ({ database }: InferGetServerSidePropsType<typeof getServerSide
         )
     }
 
-    function renderHeader(row:Row){
-        if(!row){
+    function renderHeader(row: Row) {
+        if (!row) {
             return
         }
 
@@ -100,7 +98,7 @@ const Database = ({ database }: InferGetServerSidePropsType<typeof getServerSide
         return (
             <thead className="border-b bg-gray-50">
                 <tr>
-                    {headersData.map((header:any, index:number) => {
+                    {headersData.map((header: any, index: number) => {
                         return (
                             <th scope="col" key={index} className="text-sm font-medium text-gray-900 px-6 py-4">
                                 {header}
@@ -118,31 +116,28 @@ const Database = ({ database }: InferGetServerSidePropsType<typeof getServerSide
 
     return (
         <>
-            <Header web3={true }/>
-                
+            <Header web3={true} />
             <h1 className={styles.title}>
                 {databaseName}
             </h1>
-
             <Link href={"/mintRow/" + database_id}>
                 <a>
                     <h2 className='hover:text-green-500'>Add a row &rarr;</h2>
                 </a>
             </Link>
-
             <div className="flex flex-col">
                 <div className="overflow-x-auto">
                     <div className="py-4 inline-block">
-                    <div className="overflow-hidden">
-                        <table className="min-w-full text-center">
-                            {renderHeader(database.rows[0])}
-                        <tbody>
-                            {database.rows.map((row:Row, index:number) => {
-                                return renderRow(database.contract, row, index)
-                            })}
-                        </tbody>
-                        </table>
-                    </div>
+                        <div className="overflow-hidden">
+                            <table className="min-w-full text-center">
+                                {renderHeader(database.rows[0])}
+                                <tbody>
+                                    {database.rows.map((row: Row, index: number) => {
+                                        return renderRow(database.contract, row, index)
+                                    })}
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -172,5 +167,5 @@ export async function getServerSideProps(context: any) {
     //     }
     // } 
 
-    return {props: { database }}
+    return { props: { database } }
 }

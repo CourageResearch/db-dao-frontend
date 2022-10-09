@@ -1,14 +1,11 @@
-import type { InferGetServerSidePropsType, NextPage } from 'next';
+import type { NextPage } from 'next';
 import styles from '../styles/Home.module.css';
 import Header from '../components/Header';
-import getConfig from 'next/config'
-const { publicRuntimeConfig } = getConfig()
 
 const Video: NextPage = () => {
-
     return (
         <>
-            <Header web3={false}/>
+            <Header web3={false} />
             <div className={styles.description}>
                 DB DAO is a protocol for community owned databases.
             </div>

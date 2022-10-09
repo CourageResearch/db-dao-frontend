@@ -9,46 +9,46 @@ const { publicRuntimeConfig } = getConfig()
 const Contact: NextPage = () => {
     const FORMSPREE_KEY = publicRuntimeConfig.FORMSPREE_KEY
     const [state, handleSubmit] = useForm(FORMSPREE_KEY);
-    
+
     return (
         <>
-            <Header web3={false}/>
+            <Header web3={false} />
             <div className={styles.description}>
                 Get in touch about something
             </div>
 
-            {!state.succeeded && 
-                <form  onSubmit={handleSubmit} >
-                        <div className="form-group mb-6">
-                            <label htmlFor="formUiSchema" className="form-label inline-block mb-2 text-gray-700">
-                                Your name
-                            </label>
+            {!state.succeeded &&
+                <form onSubmit={handleSubmit} >
+                    <div className="form-group mb-6">
+                        <label htmlFor="formUiSchema" className="form-label inline-block mb-2 text-gray-700">
+                            Your name
+                        </label>
                         <input
                             id="name"
-                            type="text" 
+                            type="text"
                             name="name"
                             placeholder="Your Name"
                             className={styles.greenInput}
                         />
-                        <ValidationError 
-                            prefix="Name" 
+                        <ValidationError
+                            prefix="Name"
                             field="name"
                             errors={state.errors}
                         />
                     </div>
                     <div className="form-group mb-6">
-                            <label htmlFor="formUiSchema" className="form-label inline-block mb-2 text-gray-700">
-                                Your email address
+                        <label htmlFor="formUiSchema" className="form-label inline-block mb-2 text-gray-700">
+                            Your email address
                         </label>
                         <input
                             id="email"
-                            type="email" 
+                            type="email"
                             name="email"
                             placeholder="Your Email Address"
                             className={styles.greenInput}
                         />
-                        <ValidationError 
-                            prefix="Email" 
+                        <ValidationError
+                            prefix="Email"
                             field="email"
                             errors={state.errors}
                         />
@@ -64,19 +64,17 @@ const Contact: NextPage = () => {
                             required
                             className={styles.greenInput}
                         />
-                        <ValidationError 
-                            prefix="Message" 
+                        <ValidationError
+                            prefix="Message"
                             field="message"
                             errors={state.errors}
                         />
                     </div>
-                    <div>
-                        <button type="submit" className={styles.greenButton} >
-                            Send message  
-                        </button>
-                    </div>
+                    <button type="submit" className={styles.greenButton} >
+                        Send message
+                    </button>
                 </form>
-            }    
+            }
 
             {state.succeeded &&
                 <div className="">

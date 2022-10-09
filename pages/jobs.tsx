@@ -25,13 +25,13 @@ const Jobs: NextPage = () => {
             {
                 title: 'Create your own',
                 description: "You go to a sushi restaurant and order the crazy stuff that isn't even on the menu, and that is how find a job too.",
-            },            
+            },
         ]
     )
 
     return (
         <>
-            <Header web3={false}/>
+            <Header web3={false} />
 
             <div className={styles.description}>
                 Join Something Big
@@ -58,7 +58,6 @@ const Jobs: NextPage = () => {
                 ))
             }
         </>
-
     );
 };
 

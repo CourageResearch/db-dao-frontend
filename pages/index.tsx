@@ -1,13 +1,11 @@
-import type { InferGetServerSidePropsType, NextPage } from 'next';
+import type { NextPage } from 'next';
 import styles from '../styles/Home.module.css';
 import Header from '../components/Header';
-import getConfig from 'next/config'
-const { publicRuntimeConfig } = getConfig()
 
 const Home: NextPage = () => {
     return (
         <>
-            <Header web3={false}/>
+            <Header web3={false} />
             <div className={styles.description}>
                 DB DAO is a protocol for community owned databases.
             </div>
@@ -26,9 +24,9 @@ const Home: NextPage = () => {
 
             <div className="my-3">
                 Get started building a dapp with DB DAO.  Fork the  {" "}
-                    <a  href='https://github.com/CurateDAO/db-dao-frontend' target="_blank" rel="noopener noreferrer" className={styles.greenlink}>
-                        white label app on github
-                    </a> to get started.
+                <a href='https://github.com/CurateDAO/db-dao-frontend' target="_blank" rel="noopener noreferrer" className={styles.greenlink}>
+                    white label app on github
+                </a> to get started.
             </div>
         </>
     );
