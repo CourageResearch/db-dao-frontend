@@ -9,14 +9,12 @@ import styles from '../../styles/Home.module.css';
 import pinataSDK from "@pinata/sdk"
 import { JsonForms } from '@jsonforms/react';
 import { materialRenderers, materialCells } from '@jsonforms/material-renderers';
-import Footer from '../../components/Footer';
 import getConfig from 'next/config'
 import Header, { contractConfig } from '../../components/Header';
 import Link from 'next/link';
 import Router from 'next/router'
 
 const { publicRuntimeConfig } = getConfig()
-
 
 const MintRow = ({ database }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
     const databaseId = database.databaseId
@@ -68,7 +66,6 @@ const MintRow = ({ database }: InferGetServerSidePropsType<typeof getServerSideP
         }
     }
 
-
     const { 
         config,
         error: prepareError,
@@ -114,20 +111,15 @@ const MintRow = ({ database }: InferGetServerSidePropsType<typeof getServerSideP
     }, [database_id, isSuccess]);
 
     return (
-        <div className="container mx-auto w-[35rem]">
+        <>
             <Header web3={true}/>
     
-            <main className={styles.main}>
 
-                <p className={styles.description}>
-                    Add a row to <Link href={"/database/" + database_id}>
-                            <a className={styles.greenlink}>{databaseName}</a>
-                        </Link>
-                </p>
-                {/* <a href={`/database/${database._id}`}>
-                    <h2 className='hover:text-green-500'>Go back to database &rarr;</h2>
-                </a> */}
-
+            <p className={styles.description}>
+                Add a row to <Link href={"/database/" + database_id}>
+                        <a className={styles.greenlink}>{databaseName}</a>
+                    </Link>
+            </p>
 
                 <form
                     className="flex flex-col gap-4"
@@ -136,46 +128,29 @@ const MintRow = ({ database }: InferGetServerSidePropsType<typeof getServerSideP
                         writeToChain()  
                     }}
                 >
-                    {/* <ThemeProvider theme={theme}> */}
-                        <JsonForms
-                            schema={formSchema}
-                            uischema={formUiSchema}
-                            data={formData}
-                            renderers={materialRenderers}
-                            cells={materialCells}
-                            // renderers={vanillaRenderers}
-                            // cells={vanillaCells}
-                            onChange={({ errors, data }) => setFormData(data)}
-                        />
-                    {/* </ThemeProvider> */}
+                    <JsonForms
+                        schema={formSchema}
+                        uischema={formUiSchema}
+                        data={formData}
+                        renderers={materialRenderers}
+                        cells={materialCells}
+                        onChange={({ errors, data }) => setFormData(data)}
+                    />
 
                     <button 
-                            type="submit" 
-                            className={styles.greenButton}
-                            disabled={(isLoading || isIPFSLoading)}
-                        >
-                            {(isLoading || isIPFSLoading) ? 'Minting...' : 'Mint'}
-                        </button>
+                        type="submit" 
+                        className={styles.greenButton}
+                        disabled={(isLoading || isIPFSLoading)}
+                    >
+                        {(isLoading || isIPFSLoading) ? 'Minting...' : 'Mint'}
+                    </button>
 
 
-                    {/* {isSuccess && (
-                        <div>
-                        Successfully add your row to {databaseName}!
-                            <div>
-                                View the transaction on 
-                                    <a href={`${explorerUrl}/tx/${data?.hash}`}>{exploreName}</a>
-                            </div>
-                        </div>
-                    )} */}
-                    {(isPrepareError || isError) && (
-                        <div>Error: {(prepareError || error)?.message.substring(0, 100)}</div>
-                    )}
-                </form>
-
-            </main>
-
-            <Footer/>
-        </div>
+                {(isPrepareError || isError) && (
+                    <div>Error: {(prepareError || error)?.message.substring(0, 100)}</div>
+                )}
+            </form>
+        </>
     );
 };
 

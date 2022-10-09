@@ -7,7 +7,6 @@ import {
 } from 'wagmi';
 import styles from '../../styles/Home.module.css';
 import { Contract, Row } from '../../interfaces';
-import Footer from '../../components/Footer';
 import Header, { contractConfig } from '../../components/Header';
 import getConfig from 'next/config'
 import Link from 'next/link';
@@ -118,40 +117,36 @@ const Database = ({ database }: InferGetServerSidePropsType<typeof getServerSide
     }
 
     return (
-        <div className="container mx-auto w-[35rem]">
+        <>
             <Header web3={true }/>
-            <main className={styles.main}>
                 
-                <h1 className={styles.title}>
-                    {databaseName}
-                </h1>
+            <h1 className={styles.title}>
+                {databaseName}
+            </h1>
 
-                <Link href={"/mintRow/" + database_id}>
-                    <a>
-                        <h2 className='hover:text-green-500'>Add a row &rarr;</h2>
-                    </a>
-                </Link>
+            <Link href={"/mintRow/" + database_id}>
+                <a>
+                    <h2 className='hover:text-green-500'>Add a row &rarr;</h2>
+                </a>
+            </Link>
 
-
-                <div className="flex flex-col">
-                    <div className="overflow-x-auto">
-                        <div className="py-4 inline-block">
-                        <div className="overflow-hidden">
-                            <table className="min-w-full text-center">
-                                {renderHeader(database.rows[0])}
-                            <tbody>
-                                {database.rows.map((row:Row, index:number) => {
-                                    return renderRow(database.contract, row, index)
-                                })}
-                            </tbody>
-                            </table>
-                        </div>
-                        </div>
+            <div className="flex flex-col">
+                <div className="overflow-x-auto">
+                    <div className="py-4 inline-block">
+                    <div className="overflow-hidden">
+                        <table className="min-w-full text-center">
+                            {renderHeader(database.rows[0])}
+                        <tbody>
+                            {database.rows.map((row:Row, index:number) => {
+                                return renderRow(database.contract, row, index)
+                            })}
+                        </tbody>
+                        </table>
+                    </div>
                     </div>
                 </div>
-            </main>
-            <Footer/>
-        </div>
+            </div>
+        </>
     );
 };
 

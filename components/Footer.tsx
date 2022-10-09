@@ -10,7 +10,7 @@ const Footer = () => {
                 Made by <Link href="https://dbdao.xyz/" target="_blank" rel="noreferrer"><a className={styles.greenlink}>DB DAO</a></Link> in CA, NY, and Berlin.
             </div>
             <div>
-                Follow us on
+                Follow DB DAO on
                 <Link href='https://twitter.com/db_dao' target="_blank" >
                     <a className={styles.greenlink}> Twitter</a>
                 </Link>.
