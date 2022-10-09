@@ -71,7 +71,6 @@ const Database = ({ database }: InferGetServerSidePropsType<typeof getServerSide
         const headersData = Object.keys(row.data)
     
         return (
-
             <tr key={key} className="bg-white border-b">
                 {headersData.map((header, index) => {                    
                     return (
