@@ -7,11 +7,11 @@ const Footer = () => {
         <footer className={styles.footer}>
             <div>
                 Backed by Polychain Capital, Avalanche Blizzard Fund, DAO5, and a curated set of angel investors.
-                Made in CA, NY, and Berlin.
+                Made by <Link href="https://dbdao.xyz/" target="_blank" rel="noreferrer"><a className={styles.greenlink}>DB DAO</a></Link> in CA, NY, and Berlin.
             </div>
             <div>
                 Follow us on
-                <Link href='https://twitter.com/db_dao' target="_blank">
+                <Link href='https://twitter.com/db_dao' target="_blank" >
                     <a className={styles.greenlink}> Twitter</a>
                 </Link>.
             </div>
