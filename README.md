@@ -1,4 +1,4 @@
-This is a skeleton [DB DAO](https://www.dbdao.xyz) project to help get started.  It offers create, read, update, and destroy functionality.
+This is a skeleton [DB DAO](https://www.dbdao.xyz).  It offers create, read, and destroy functionality.
 
 ## Getting Started
 
