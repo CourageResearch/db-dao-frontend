@@ -1,0 +1,65 @@
+{
+    "type": "VerticalLayout",
+    "elements": [
+        {
+            "type": "Control",
+            "label": "Substance Name",
+            "scope": "#/properties/substance"
+        },
+        {
+            "type": "Control",
+            "label": "Dose",
+            "scope": "#/properties/dose"
+        },
+        {
+            "type": "Control",
+            "label": "Route of administration",
+            "scope": "#/properties/route"
+        },
+        {
+            "type": "Control",
+            "label": "Body weight (kg)",
+            "scope": "#/properties/bodyWeight"
+        },
+        {
+            "type": "Control",
+            "label": "Gender",
+            "scope": "#/properties/gender"
+        },
+        {
+            "type": "Control",
+            "label": "Age",
+            "scope": "#/properties/age"
+        },
+        {
+            "type": "Control",
+            "label": "Date of experience",
+            "scope": "#/properties/experienceDate",
+            "options": {
+                "format": "date",
+                "clearLabel": "Clear it!",
+                "cancelLabel": "Abort",
+                "okLabel": "Do it",
+                "views": [
+                  "year",
+                  "month"
+                ],
+                "dateFormat": "YYYY-MM",
+                "dateSaveFormat": "YYYY-MM"
+            }
+        },
+        {
+            "type": "Control",
+            "label": "Free text explaining experience",
+            "scope": "#/properties/freeText",
+            "options": {
+                "multi": true
+            }
+        },
+        {
+            "type": "Control",
+            "label": "URL for additional data",
+            "scope": "#/properties/url"
+        }
+    ]
+}

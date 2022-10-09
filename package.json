@@ -1,0 +1,42 @@
+{
+  "name": "db-dao",
+  "private": true,
+  "version": "0.1.0",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@emotion/react": "^11.10.4",
+    "@emotion/styled": "^11.10.4",
+    "@formspree/react": "^2.4.0",
+    "@jsonforms/core": "^3.0.0",
+    "@jsonforms/material-renderers": "^3.0.0",
+    "@jsonforms/react": "^3.0.0",
+    "@mui/icons-material": "^5.10.6",
+    "@mui/material": "^5.10.7",
+    "@mui/x-date-pickers": "^5.0.3",
+    "@pinata/sdk": "^1.1.26",
+    "@rainbow-me/rainbowkit": "^0.6.1",
+    "@tailwindcss/forms": "^0.5.3",
+    "autoprefixer": "^10.4.12",
+    "ethers": "^5.0.0",
+    "next": "^12.1.6",
+    "nextjs-google-analytics": "^2.1.0",
+    "postcss": "^8.4.17",
+    "react": "^18.1.0",
+    "react-dom": "^18.1.0",
+    "tailwindcss": "^3.1.8",
+    "usehooks-ts": "^2.7.1",
+    "wagmi": "^0.6.7"
+  },
+  "devDependencies": {
+    "@types/node": "^17.0.35",
+    "@types/react": "^18.0.9",
+    "eslint": "^8.15.0",
+    "eslint-config-next": "^12.1.6",
+    "typescript": "^4.7.2"
+  }
+}

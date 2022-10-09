@@ -1,0 +1,40 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body {
+    /* background-image: url('/1.jpg'); */
+    padding: .5rem;
+    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+        Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+    /* @apply underline text-blue-600 hover:text-blue-800 visited:text-purple-600 */
+
+}
+
+html {
+    @apply selection:bg-green-400;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+/* .title {
+    background-image: "linear-gradient(to bottom, transparent 0.12em, #fff003 0.12em, #fff003 0.84em, transparent .84em)";
+    text-transform: "uppercase";
+    color: #000;
+    line-height: 3.125rem;
+    font-size: 3.125rem;
+    font-weight: 700;
+    font-family: Arial;
+    display:'inline-block';
+    box-sizing: "border-box";
+    top: "-0.125em";
+    position: "relative";
+} */
