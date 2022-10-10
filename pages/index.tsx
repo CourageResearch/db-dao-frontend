@@ -22,12 +22,12 @@ const Home: NextPage = () => {
                 DB DAO is a new protocol to incentivize contributions and allow for structured web3 data to be stored and queried.
             </div>
 
-            {/* <div className="my-3">
+            <div className="my-3">
                 Get started building a dapp with DB DAO.  Fork the  {" "}
                 <a href='https://github.com/CurateDAO/db-dao-frontend' target="_blank" rel="noopener noreferrer" className={styles.greenlink}>
                     white label app on github
                 </a> to get started.
-            </div> */}
+            </div>
         </>
     );
 };
