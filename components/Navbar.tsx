@@ -5,7 +5,7 @@ import { useRouter } from 'next/router';
 const menu = [
     ["/", "Home"],
     ["/mintDatabase", "Mint a DB"],
-    ["/explore", "Explore DBs"],
+    // ["/explore", "Explore DBs"],
     ["https://docs.dbdao.xyz", "Lightpaper"],
     ["/contact", "Contact"], 
     ["/jobs", "Jobs"],
