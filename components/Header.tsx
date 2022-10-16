@@ -30,7 +30,7 @@ const Header: FunctionComponent<Props> = ({ web3 }) => {
                 />
             </Head>
 
-            <div className="container flex flex-wrap justify-between items-center mx-auto">
+            <div className="flex flex-wrap justify-between items-center mx-auto">
                 <Link href='/'>
                     <a>
                         <h1 className={`${styles.logo} flex items-left`}>

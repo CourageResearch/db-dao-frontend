@@ -7,6 +7,7 @@ import { alchemyProvider } from 'wagmi/providers/alchemy';
 import { publicProvider } from 'wagmi/providers/public';
 import { GoogleAnalytics } from "nextjs-google-analytics";
 import Footer from '../components/Footer';
+import styles from '../styles/Home.module.css';
 
 const { chains, provider, webSocketProvider } = configureChains(
     [
@@ -45,7 +46,7 @@ const wagmiClient = createClient({
 function MyApp({ Component, pageProps }: AppProps) {
     return (
         <WagmiConfig client={wagmiClient}>
-            <div className="container mx-auto w-[35rem]">
+            <div className="mx-auto w-[35rem] px-4">
                 <RainbowKitProvider chains={chains}>
                     <GoogleAnalytics trackPageViews />
                     <Component {...pageProps} />
