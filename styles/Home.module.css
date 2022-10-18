@@ -4,16 +4,16 @@
 
 .footer {
     border-top: 1px solid #eaeaea;
-    align-items: center;
+    /* align-items: center; */
     
     @apply mt-7 pt-4 space-y-2 text-gray-500;
 }
 
-.title a:hover,
+/* .title a:hover,
 .title a:focus,
 .title a:active {
     text-decoration: underline;
-}
+} */
 
 .logo {
     margin: 1rem 0;
