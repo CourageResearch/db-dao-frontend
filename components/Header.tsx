@@ -28,6 +28,13 @@ const Header: FunctionComponent<Props> = ({ web3 }) => {
                     name="description"
                     content="Welcome to DB DAO! A DAO for databases."
                 />
+
+                <meta name="twitter:card" content="summary_large_image" />
+                <meta name="twitter:site" content="@db_dao" />
+                <meta name="twitter:title" content="DB DAO - The open source database for web3 apps" />
+                <meta name="twitter:description" content="DB DAO is a protocol for community owned databases. DB DAO makes each database a DAO and each database row an NFT.  As a database monetizes, the people that contributed are rewarded." />
+                <meta name="twitter:image" content="https://www.dbdao.xyz/twitter.png" />
+
             </Head>
 
             <div className="flex flex-wrap justify-between items-center mx-auto">
