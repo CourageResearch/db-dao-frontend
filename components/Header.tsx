@@ -26,7 +26,7 @@ const Header: FunctionComponent<Props> = ({ web3 }) => {
                 <title>DB DAO</title>
                 <meta
                     name="description"
-                    content="Welcome to DB DAO! A DAO for databases."
+                    content="Welcome to DB DAO. DB DAO makes each database a DAO and each database row an NFT.  As a database monetizes, the people that contributed are rewarded."
                 />
 
                 <meta name="twitter:card" content="summary_large_image" />
