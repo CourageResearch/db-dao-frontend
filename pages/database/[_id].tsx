@@ -1,12 +1,13 @@
 import { useEffect, useState } from 'react';
-import type { InferGetServerSidePropsType, NextPage } from 'next';
+import type { InferGetServerSidePropsType } from 'next';
 import {
     useContractWrite,
     usePrepareContractWrite,
     useNetwork,
+    useAccount,
 } from 'wagmi';
 import styles from '../../styles/Home.module.css';
-import { Contract, Row } from '../../interfaces';
+import { Contract, Database, Row } from '../../interfaces';
 import Header, { contractConfig } from '../../components/Header';
 import getConfig from 'next/config'
 import Link from 'next/link';
@@ -15,6 +16,7 @@ const { publicRuntimeConfig } = getConfig()
 const Database = ({ database }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
     const database_id = database._id
     const databaseName = database.name
+    const { address } = useAccount()
 
     const { chain: activeChain } = useNetwork();
     const [rowId, setRowId] = useState<number | undefined>()
@@ -56,7 +58,7 @@ const Database = ({ database }: InferGetServerSidePropsType<typeof getServerSide
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [isPrepareSuccessRemoveRow]);
 
-    function renderRow(contract: Contract, row: Row, key: number) {
+    function renderRow(database: Database, row: Row, key: number) {
 
         // other info
         // owner
@@ -66,6 +68,8 @@ const Database = ({ database }: InferGetServerSidePropsType<typeof getServerSide
         const rowId = row.rowId
         const data: any = row.data
         const headersData = Object.keys(row.data)
+        const contract: Contract = database.contract
+        const owner:string = database.owner
 
         return (
             <tr key={key} className="bg-white border-b">
@@ -77,12 +81,14 @@ const Database = ({ database }: InferGetServerSidePropsType<typeof getServerSide
                     )
                 })}
                 <td>
-                    <button
-                        className={styles.greenButton}
-
-                        onClick={() => handleRemoveRow(rowId)}>
-                        Remove
-                    </button>
+                    {
+                        (owner == address) && <button
+                            className={styles.greenButton}
+                            onClick={() => handleRemoveRow(rowId)}
+                        >
+                            Remove
+                        </button>
+                    }
                 </td>
             </tr>
         )
@@ -133,7 +139,7 @@ const Database = ({ database }: InferGetServerSidePropsType<typeof getServerSide
                                 {renderHeader(database.rows[0])}
                                 <tbody>
                                     {database.rows.map((row: Row, index: number) => {
-                                        return renderRow(database.contract, row, index)
+                                        return renderRow(database, row, index)
                                     })}
                                 </tbody>
                             </table>

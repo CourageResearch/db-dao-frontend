@@ -20,7 +20,7 @@ const menu = [
 const Navbar = () => {
     const router = useRouter();
     return (
-        <div className="grid grid-cols-5 w-[35rem]">
+        <div className="grid grid-cols-4 w-[35rem]">
             {
                 menu.map(([path1, name1], key) => (
                     <Link key={key} href={path1}>

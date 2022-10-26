@@ -23,7 +23,7 @@ const nextConfig = {
         baseUrl: "http://localhost:8000",
         PINATA_KEY: process.env.PINATA_KEY,
         PINATA_SECRET: process.env.PINATA_SECRET,
-        ALCHEMY_KEY: process.env.ALCHEMY_KEY,
+        // ALCHEMY_KEY: process.env.ALCHEMY_KEY,
         FORMSPREE_KEY: process.env.FORMSPREE_KEY,
     },
 };
