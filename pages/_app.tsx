@@ -46,7 +46,7 @@ const wagmiClient = createClient({
 function MyApp({ Component, pageProps }: AppProps) {
     return (
         <WagmiConfig client={wagmiClient}>
-            <div className="mx-auto w-[35rem] px-4">
+            <div className="container mx-auto w-[35rem] px-4">
                 <RainbowKitProvider chains={chains}>
                     <GoogleAnalytics trackPageViews />
                     <Component {...pageProps} />
