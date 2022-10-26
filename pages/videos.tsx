@@ -9,6 +9,14 @@ const videos = [
     //     ytid: '',
     // },
     {
+        title: 'CoinList Seed Demo Day VIII',
+        ytid: 'guSYjCfx5LA',
+    },
+    {
+        title: 'Climate Workshops and Talks - Bogota, Colombia',
+        ytid: 'sY6jfUZmDdo',
+    },
+    {
         title: 'DB DAO at InfraCon',
         ytid: 'jZ4COFixKQo',
     },
@@ -23,7 +31,7 @@ const videos = [
     {
         title: 'What is Social Media for Web3?',
         ytid: 'tTLe1pyNQdI',
-    },      
+    },
     {
         title: "Founders' Talk: What is Web3?",
         ytid: 'YM7B2ay67_g',
@@ -34,9 +42,8 @@ const videos = [
         ytid: 'DRvdGZxYjWc',
     },
     {
-        title: 'Arbitrum AMA with CurateDAO',
-        // nameAuthor: '',
-        ytid: '9X32lVNpHmI',
+        title: 'CurateDAO x Arbitrum AMA June 16, 2022',
+        ytid: 'mco3ZFcZLAI',
     },
     {
         title: 'Expert Choice: Top 40 DAOs in 2022',

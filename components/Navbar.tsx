@@ -8,6 +8,7 @@ const menu = [
     ["/explore", "Explore DBs"],
     ["https://docs.dbdao.xyz", "Lightpaper"],
     ["/videos", "Videos"],
+    ["/news", "News"],
     ["/contact", "Contact"], 
     ["/jobs", "Jobs"],
     
