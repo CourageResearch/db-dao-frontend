@@ -11,6 +11,7 @@ const menu = [
     ["/news", "News"],
     ["/contact", "Contact"], 
     ["/jobs", "Jobs"],
+    ["/hairForm", "Form"],
     
     // ["/tldr", "tldr"],
     // ["/faq", "faq"],

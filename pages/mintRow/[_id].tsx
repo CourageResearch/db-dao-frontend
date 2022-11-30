@@ -98,6 +98,7 @@ const MintRow = ({ database }: InferGetServerSidePropsType<typeof getServerSideP
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [isPrepareSuccess]);
 
+    
     const writeToChain = async () => {
         console.log(formData)
         const ipfsHash = await uploadToPinata(formData)
@@ -130,7 +131,7 @@ const MintRow = ({ database }: InferGetServerSidePropsType<typeof getServerSideP
                     uischema={formUiSchema}
                     data={formData}
                     renderers={materialRenderers}
-                    cells={materialCells}
+                    // cells={materialCells}
                     onChange={({ errors, data }) => setFormData(data)}
                 />
                 <button

@@ -2,6 +2,36 @@ import type { NextPage } from 'next';
 import styles from '../styles/Home.module.css';
 import Header from '../components/Header';
 import Link from 'next/link';
+// import { gql } from "@apollo/client";
+// import client from "../apollo-client";
+
+// export async function getStaticProps() {
+//     const { data } = await client.query({
+//       query: gql`
+//       query {
+//         row(query: { _id: "6346c6e7cc99450a3dcd5f38" }) {
+//             _id 
+//             contract
+//             database
+//             databaseId
+//             owner
+//             rowId
+//             updatedAt
+//             user
+//         }
+//       }
+//       `,
+//     });
+
+//     console.log(data)
+
+//     return {
+//       props: {
+//         // countries: data.countries.slice(0, 4),
+//       },
+//    };
+// }
+
 
 const Home: NextPage = () => {
     return (
@@ -35,6 +65,7 @@ const Home: NextPage = () => {
                 Summary
             </div>
 
+
             <ul className="list-disc list-inside">
                 <li>
                     Each database is managed by a DAO (<Link href="https://gnosis-safe.io/"><a className={styles.greenlink}>gnosis multisig</a></Link>)
@@ -58,9 +89,6 @@ const Home: NextPage = () => {
                     (soon) ZK proofs to verify queries in the cache
                 </li>
             </ul>
-
-
-
         </>
     );
 };

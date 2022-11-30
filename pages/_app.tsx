@@ -8,6 +8,7 @@ import { publicProvider } from 'wagmi/providers/public';
 import { GoogleAnalytics } from "nextjs-google-analytics";
 import Footer from '../components/Footer';
 import styles from '../styles/Home.module.css';
+// import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
 
 const { chains, provider, webSocketProvider } = configureChains(
     [
@@ -43,17 +44,26 @@ const wagmiClient = createClient({
     webSocketProvider,
 });
 
+// const client = new ApolloClient({
+//     uri: 'http://localhost:8000/graphql',
+//     cache: new InMemoryCache(),
+// });
+  
+
 function MyApp({ Component, pageProps }: AppProps) {
     return (
-        <WagmiConfig client={wagmiClient}>
-            <div className="container mx-auto w-[35rem] px-4">
-                <RainbowKitProvider chains={chains}>
-                    <GoogleAnalytics trackPageViews />
-                    <Component {...pageProps} />
-                </RainbowKitProvider>
-                <Footer />
-            </div>
-        </WagmiConfig>
+            <WagmiConfig client={wagmiClient}>
+                <div className="container mx-auto w-[35rem] px-4">
+                    <RainbowKitProvider chains={chains}>
+                        <GoogleAnalytics trackPageViews />
+                        {/* <ApolloProvider client={client}> */}
+                            <Component {...pageProps} />
+                        {/* </ApolloProvider> */}
+                    </RainbowKitProvider>
+                    <Footer />
+                </div>
+            </WagmiConfig>
+
     );
 }
 

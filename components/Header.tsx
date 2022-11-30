@@ -6,6 +6,7 @@ import Navbar from './Navbar';
 import { ConnectButton } from '@rainbow-me/rainbowkit';
 import contractInterface from '../contract-abi.json';
 import configContracts from "../configContracts.json"
+import { useSigner } from 'wagmi';
 
 interface Props {
       web3: boolean;
@@ -19,7 +20,15 @@ export const contractConfig = {
     contractInterface: contractInterface,
 };
 
+
+
 const Header: FunctionComponent<Props> = ({ web3 }) => {
+
+    // const {data: signer} = useSigner();
+    // console.log(signer?._address)
+    // "0x1d1Caa3A187AfBdF298a32a79DfC34F3BB22952F"
+    // const web3 = new Web3((signer?.provider as any).provider);
+
     return (
         <Fragment>
             <Head>
